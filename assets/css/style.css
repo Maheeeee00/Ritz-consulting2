@@ -580,3 +580,70 @@ footer .ci svg.i{width:16px;height:16px;color:var(--gold)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.chart .line{stroke-dashoffset:0}.chart .area,.chart .dot{opacity:1}}
 .post .tag,.cmini .tag{align-self:flex-start}
+
+/* ---------- price list (schedule tables) ---------- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.fees-top{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:stretch;margin-bottom:22px}
+.fnote{display:flex;gap:14px;align-items:flex-start;background:var(--soft);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:18px 22px}
+.fnote svg.i{color:var(--gold);margin-top:2px}
+.fnote p{font-size:.94rem}
+.fsearch{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;background:#fff;transition:border-color .25s,box-shadow .25s}
+.fsearch:focus-within{border-color:var(--navy);box-shadow:0 0 0 4px rgba(20,40,92,.1)}
+.fsearch svg.i{color:var(--gold);width:20px;height:20px}
+.fsearch input{flex:1;border:none;padding:16px 0;font:500 .95rem 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:none;min-width:0}
+.fsearch input:focus{outline:none}
+.fjump{margin-bottom:40px}
+.fjump .chip{font-size:.8rem;padding:7px 14px}
+.fsec{margin-bottom:34px;scroll-margin-top:100px}
+.fintro{color:var(--muted);font-size:.94rem;margin-bottom:12px;max-width:900px}
+.ftable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+.ftable thead th{background:var(--navy);color:#fff;text-align:left;padding:15px 20px;font:700 .8rem 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.ftable thead th:first-child{font:700 1.08rem 'Playfair Display',Georgia,serif;letter-spacing:0;text-transform:none}
+.ftable thead th:nth-child(2){color:var(--gold-2);text-align:right;width:210px}
+.ftable thead th:nth-child(3){color:var(--gold-2);width:300px}
+.ftable td{padding:13px 20px;border-top:1px solid var(--line);font-size:.93rem;vertical-align:top}
+.ftable tr.frow:hover td{background:#fafbfe}
+.ftable td.fp{text-align:right;font:700 1.02rem 'Playfair Display',Georgia,serif;color:var(--navy);white-space:nowrap}
+.ftable td.ff{color:var(--muted);font-size:.86rem}
+.ftable tr.fsub td{background:#f7f3e9;color:#8a6a22;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px}
+.ftable tr.fex td{background:#eef3fb;color:#2c4a8a;font-size:.88rem;font-style:italic}
+.ftable tr.fex td b{font-style:normal;color:var(--navy)}
+.tname{display:block;color:var(--navy);font-size:1rem}
+.tbest{display:block;color:var(--muted);font-size:.88rem;margin-top:2px}
+.ftable details{margin-top:8px}
+.ftable summary{cursor:pointer;color:var(--navy);font-weight:700;font-size:.84rem;list-style:none;display:inline-flex;gap:6px;align-items:center}
+.ftable summary::-webkit-details-marker{display:none}
+.ftable summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--navy-2);font-size:.9rem;transition:transform .3s}
+.ftable details[open] summary::before{transform:rotate(45deg)}
+.ftable details ul{margin:10px 0 2px 18px;display:grid;gap:5px;color:var(--muted);font-size:.87rem;animation:fadeUp .35s var(--ease)}
+.fterms-h{font-size:1.5rem;margin-bottom:14px}
+.fterms{list-style:none;display:grid;gap:10px;border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:#fff}
+.fterms li{padding-left:18px;position:relative;font-size:.92rem;color:var(--ink)}
+.fterms li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.fsec.nomatch .ftable{display:none}
+.fsec.nomatch .fnone{display:block!important;color:var(--muted);font-size:.88rem}
+mark.fhit{background:rgba(201,162,74,.35);color:inherit;border-radius:3px;padding:0 2px}
+@media (max-width:860px){
+  .fees-top{grid-template-columns:1fr}
+  .ftable thead th:nth-child(2),.ftable thead th:nth-child(3){display:none}
+  .ftable,.ftable tbody,.ftable tr,.ftable td{display:block;width:100%}
+  .ftable tr.frow{border-top:1px solid var(--line);padding:12px 18px}
+  .ftable tr.frow td{border:none;padding:2px 0}
+  .ftable td.fp{text-align:left;font-size:1.1rem;margin-top:4px}
+  .ftable td.fp::before{content:attr(data-l) ": ";font:600 .72rem 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .ftable td.ff:empty{display:none}
+}
+@media print{
+  .topbar,header.nav,footer,.to-top,.progress,.cta,.page-hero .actions,.fsearch,.fjump,.crumbs{display:none!important}
+  .page-hero{padding:20px 0;background:none;color:#000}
+  .page-hero::before,.page-hero::after{display:none}
+  .page-hero h1,.page-hero p{color:#000;text-shadow:none}
+  .reveal{opacity:1!important;transform:none!important}
+  section{padding:10px 0}
+  .ftable{box-shadow:none;break-inside:auto}
+  .ftable tr{break-inside:avoid}
+  .ftable thead th{background:#14285c!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ftable details ul{display:grid}
+  .fsec{break-inside:avoid-page}
+}
+.btn-outline,.btn-line{background:transparent}

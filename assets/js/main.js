@@ -229,3 +229,30 @@ $$('.filter').forEach(b => b.addEventListener('click', () => {
   const c = b.dataset.cat;
   $$('.post').forEach(p => p.classList.toggle('hide', c !== 'all' && p.dataset.cat !== c));
 }));
+
+/* ---------- price list search ---------- */
+const feeQ = document.getElementById('fee-q');
+if (feeQ) {
+  $$('.ftable td').forEach(td => td.dataset.orig = td.innerHTML);
+  const run = () => {
+    const q = feeQ.value.trim().toLowerCase();
+    $$('.fsec').forEach(sec => {
+      const t = $('.ftable', sec); if (!t) return;
+      let any = false;
+      const title = $('thead th', sec).textContent.toLowerCase();
+      $$('tbody tr', sec).forEach(tr => {
+        const tds = $$('td', tr); tds.forEach(td => td.innerHTML = td.dataset.orig);
+        if (!q) { tr.hidden = false; return; }
+        const hit = tr.classList.contains('frow') && (tr.textContent.toLowerCase().includes(q) || title.includes(q));
+        tr.hidden = !hit; if (hit) any = true;
+        if (hit && tr.textContent.toLowerCase().includes(q)) {
+          const td = tds[0], esc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          if (!td.querySelector('details')) td.innerHTML = td.innerHTML.replace(new RegExp('(' + esc + ')(?![^<]*>)', 'gi'), '<mark class="fhit">$1</mark>');
+        }
+      });
+      sec.classList.toggle('nomatch', !!q && !any);
+      sec.hidden = !!q && !any;
+    });
+  };
+  feeQ.addEventListener('input', run);
+}
